@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Produto {
     // atributos
     private String nome;
@@ -34,6 +36,19 @@ public class Produto {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Produto produto = (Produto) o;
+        return Double.compare(getPreco(), produto.getPreco()) == 0 && getQuantidade() == produto.getQuantidade() && Objects.equals(getNome(), produto.getNome()) && Objects.equals(getDescricao(), produto.getDescricao());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getNome(), getPreco(), getDescricao(), getQuantidade());
     }
 
     @Override
