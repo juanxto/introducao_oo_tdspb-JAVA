@@ -50,17 +50,6 @@ public class Produto {
     public int hashCode() {
         return Objects.hash(getNome(), getPreco(), getDescricao(), getQuantidade());
     }
-
-    @Override
-    public String toString() {
-        return "Produto{" +
-                "nome='" + nome + '\'' +
-                ", preco=" + preco +
-                ", descricao='" + descricao + '\'' +
-                ", quantidade=" + quantidade +
-                '}';
-    }
-
     public String getNome() {
         return nome;
     }
@@ -75,5 +64,14 @@ public class Produto {
 
     public int getQuantidade() {
         return quantidade;
+    }
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "nome='" + nome + '\'' +
+                ", preco=" + preco +
+                ", descricao='" + descricao + '\'' +
+                ", quantidade=" + quantidade +
+                '}';
     }
 }
