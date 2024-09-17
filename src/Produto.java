@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Produto {
@@ -6,6 +7,7 @@ public class Produto {
     private double preco;
     private String descricao;
     private int quantidade;
+    private ArrayList<Caracteristica> caracteristicas  = new ArrayList<>();
     // construtor
     public Produto(String nome, double preco, String descricao, int quantidade) {
         this.nome = nome;
@@ -13,6 +15,29 @@ public class Produto {
         this.descricao = descricao;
         this.quantidade = quantidade;
     }
+
+    public Produto(String nome, double preco, String descricao, int quantidade, ArrayList<Caracteristica> caracteristicas) {
+        this.nome = nome;
+        this.preco = preco;
+        this.descricao = descricao;
+        this.quantidade = quantidade;
+        this.caracteristicas = caracteristicas;
+    }
+
+    public Produto(){
+
+    }
+
+    public ArrayList<Caracteristica> getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(ArrayList<Caracteristica> caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
+
+
+
     //métodos
     public void adicionarQuantidade(int quantidade) {
         this.quantidade += quantidade;
@@ -43,13 +68,14 @@ public class Produto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Produto produto = (Produto) o;
-        return Double.compare(getPreco(), produto.getPreco()) == 0 && getQuantidade() == produto.getQuantidade() && Objects.equals(getNome(), produto.getNome()) && Objects.equals(getDescricao(), produto.getDescricao());
+        return Double.compare(preco, produto.preco) == 0 && quantidade == produto.quantidade && Objects.equals(nome, produto.nome) && Objects.equals(descricao, produto.descricao) && Objects.equals(caracteristicas, produto.caracteristicas);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getNome(), getPreco(), getDescricao(), getQuantidade());
+        return Objects.hash(nome, preco, descricao, quantidade, caracteristicas);
     }
+
     public String getNome() {
         return nome;
     }
@@ -65,6 +91,7 @@ public class Produto {
     public int getQuantidade() {
         return quantidade;
     }
+
     @Override
     public String toString() {
         return "Produto{" +
@@ -72,6 +99,7 @@ public class Produto {
                 ", preco=" + preco +
                 ", descricao='" + descricao + '\'' +
                 ", quantidade=" + quantidade +
+                ", caracteristicas=" + caracteristicas +
                 '}';
     }
 }
